@@ -27,7 +27,7 @@
         color: var(--red);
         cursor: pointer;
         border: 1px solid var(--red);
-        transition: .25s ease;
+        transition: var(--speed);
     }
 
     #toggler:checked + #menu {
@@ -44,6 +44,12 @@
     .form-inputs {
         gap: 10px;
         grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        justify-items: center;
     }
 }
 

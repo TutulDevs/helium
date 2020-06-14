@@ -15,6 +15,7 @@
     --white: #ffffff;
     --black: #575C61;
     --gray: #F6F6F6;
+    --speed: all 0.3s ease;
 }
 
 body {
@@ -25,7 +26,7 @@ body {
 ********************************************/
 a {
     text-decoration: none;
-    transition: all .25s ease;
+    transition: var(--speed);
 }
 
 ul {
@@ -40,9 +41,20 @@ ul {
 }
 
 .button {
+    display: inline-block;
     text-transform: capitalize;
     border: 2px solid;
     border-radius: 5px;
+}
+.button-main {
+    margin-top: 10px;
+    color: var(--red);
+    padding: 10px 20px;
+}
+.button-main:hover {
+    color: var(--white);
+    background: var(--red);
+    border-color: var(--red);
 }
 
 .section-header {
@@ -57,8 +69,20 @@ ul {
     max-width: 1000px;
     margin: 0 auto;
 }
-section {
+section,
+#footer {
     padding: 3rem 0;
+}
+/*      display: grid  */
+.dg {
+    display: grid;
+    gap: 2rem 1.35rem;
+}
+.dg3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.dg4 {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 /*          gray bacground      */
@@ -103,9 +127,6 @@ section {
 #toggler {
     display: none;
 }
-
-
-
 /*                              hero
 ********************************************/
 .hero {
@@ -148,16 +169,8 @@ section {
     background: var(--white);
     border-color: var(--white);
 }
-
-
 /*                              about
 ********************************************/
-.about {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-}
-
 .about-box {
     text-align: center;
 }
@@ -165,18 +178,11 @@ section {
     margin-bottom: 10px;
 }
 .about-box img {
-    width: 50%;
+    width: 90px;
     margin-bottom: 15px;
 }
-
-
 /*                              service
 ********************************************/
-.service {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
 .service-box {
     padding: 10px;
     display: grid;
@@ -191,15 +197,14 @@ section {
 .icon {
     color: var(--red);
 }
-
-
 /*                              portfolio
 ********************************************/
+#portfolio .dg3 {
+    gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
 .portfolio {
-    border: 1px solid teal;
     margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 .portfolio-item {
     background: red;
@@ -222,7 +227,7 @@ section {
     width: 80%;
     height: 80%;
     opacity: 0;
-    transition: .3s ease;
+    transition: var(--speed);
 
     display: grid;
     justify-content: center;
@@ -231,7 +236,7 @@ section {
 }
 
 .portfolio-item .icon-box {
-    transition: 0.3s ease;
+    transition: var(--speed);
 }
 .portfolio-item .icon-box a {
     color: var(--white);
@@ -242,7 +247,7 @@ section {
     border: 1px solid var(--white);
     padding: 10px;
     border-radius: 50%;
-    transition: .25s ease;
+    transition: var(--speed);
 }
 .portfolio-item .icon-box a:hover i {
     background: var(--white);
@@ -275,12 +280,12 @@ section {
     flex-flow: row wrap;
     justify-content: center;
 }
-.portfolio-menu a {
+.portfolio-menu .button {
     border: 2px solid var(--red);
     color: var(--black);
     padding: 8px 12px;
     margin: 3px;
-    display: inline-block;
+    border-radius: 0;
 }
 .portfolio-menu a.active,
 .portfolio-menu a:hover {
@@ -299,7 +304,7 @@ section {
     padding: 15px;
     font-size: 0.75rem;
     border-radius: 5px;
-    transition: .3s ease;
+    transition: var(--speed);
 }
 .feature .service-box:hover  .icon{
     background: var(--red);
@@ -309,7 +314,8 @@ section {
 
 /*                              counter
 ********************************************/
-#counter {
+#counter,
+#testimonial {
     background: url('../img/testimonial.jpg') no-repeat;
     background-size: cover;
     color: var(--white);
@@ -337,15 +343,9 @@ section {
 
 /*                              team
 ********************************************/
-.team {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
 .team-item {
     overflow: hidden;
-    transition: .3s ease;
+    transition: var(--speed);
     position: relative;
 }
 .team-item img {
@@ -362,7 +362,7 @@ section {
     background: rgba(0, 0, 0, 0.75);
     color: var(--white);
     opacity: 0;
-    transition: .3s ease;
+    transition: var(--speed);
 
     display: grid;
     gap: 5px;
@@ -380,12 +380,12 @@ section {
     color: var(--white);
     font-size: 1.5rem;
     margin: 0 5px;
-    transition: 0.3s linear;
+    transition: var(--speed);
 }
 
 .team-item .team-desc,
 .team-item .social {
-    transition: 0.3s ease;
+    transition: var(--speed);
 }
 .team-item:hover .team-desc {
     transform: translateY(-50%);
@@ -412,7 +412,7 @@ section {
 .table {
     text-align: center;
     color: #333333;
-    padding: 1rem;
+    padding: 2rem 1rem;
     border-radius: 5px;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
 }
@@ -441,38 +441,28 @@ section {
 .premium {
     background: var(--red);
     color: var(--white);
+    transform: scale(1.05);
 }
 
 .table .button {
-    display: inline-block;
     margin-top: 10px;
+}
+.button-premium {
+    background: var(--white);
     color: var(--red);
     padding: 10px 20px;
+    border: 0;
 }
-.table .button:hover {
-    color: var(--white);
-    background: var(--red);
-    border-color: var(--red);
-}
-.premium .button {
+.button-premium:hover {
     background: var(--white);
     color: var(--red);
 }
-.premium .button:hover {
-    background: var(--white);
-    color: var(--red);
-}
-
-
 /*                              testimonial
 ********************************************/
 #testimonial {
-    background: url('../img/testimonial.jpg') no-repeat;
-    background-size: cover;
-    color: var(--white);
     text-align: center;
+    /* see #counter */
 }
-
 .testimonial > * {
     margin-bottom: 15px;
 }
@@ -489,18 +479,15 @@ section {
 .testimonial span {
     color: var(--red);
 }
-
 /*                              contact
 ********************************************/
 .contact {
-    display: grid;
-    gap: 20px;
     grid-template-columns: 2fr 1fr;
 }
 .contact h3 {
     margin-bottom: 15px;
 }
-
+    /*  contact form    */
 .form-inputs {
     display: grid;
     gap: 10px;
@@ -534,20 +521,16 @@ section {
 }
 .contact-form .button {
     cursor: pointer;
-    padding: 12px 18px;
-    color: var(--red);
     background: transparent;
     font-size: 1rem;
-    transition: 0.3s ease;
+    transition: var(--speed);
 }
 .contact-form .button:hover {
     background: var(--red);
     border-color: var(--red);
     color: var(--white);
 }
-
-
-
+    /*  contact info    */
 .contact-info p {
     line-height: 1.75;
 }
@@ -561,14 +544,11 @@ section {
     font-size: 1.25rem;
     margin: 8px;
 }
-
-
 /*                              footer
 ********************************************/
 #footer {
     background: #282828;
     color: var(--white);
-    padding: 2rem 0;
 }
 .footer-box h3 {
     margin-bottom: 1rem;
@@ -590,18 +570,16 @@ section {
     color: var(--gray);
     outline: none;
     border: 2px solid var(--gray);
-    transition: 0.3s ease;
+    transition: var(--speed);
 }
 .newsletter input:focus {
     border-color: var(--red);
 }
 .newsletter .button {
     cursor: pointer;
-    padding: 12px 18px;
-    color: var(--red);
     background: transparent;
     font-size: 1rem;
-    transition: 0.3s ease;
+    transition: var(--speed);
 }
 .newsletter .button:hover {
     background: var(--red);
@@ -617,8 +595,6 @@ section {
 .footer-gallery img {
     width: 100%;
 }
-
-
 /*                              footer-bottom
 ********************************************/
 #footer-bottom {
@@ -631,11 +607,9 @@ section {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
 }
-
 .footer-bottom p a {
     color: var(--red);
 }
-
 .footer-nav {
     display: grid;
     gap: 5px;
